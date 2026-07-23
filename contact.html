@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book / Enquire — The Living Room Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .contact-grid{ display:grid; grid-template-columns:.9fr 1.4fr; gap:64px; align-items:start; }
+  @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
+  .info-card{ border:1px solid var(--line); padding:32px; margin-bottom:20px; }
+  .info-card h4{ font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--brass); margin-bottom:.8em; font-family:var(--sans); }
+  .info-card a, .info-card p{ color:var(--paper-dim); font-size:.98rem; }
+  .info-card a:hover{ color:var(--paper); }
+
+  form{ display:flex; flex-direction:column; gap:22px; }
+  .field{ display:flex; flex-direction:column; gap:.5em; }
+  .field label{ font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; color:var(--paper-dim); }
+  .field input, .field select, .field textarea{
+    background:var(--surface); border:1px solid var(--line); color:var(--paper);
+    padding:.9em 1em; font-size:.95rem; width:100%;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{ border-color:var(--brass); outline:none; }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media (max-width:600px){ .field-row{ grid-template-columns:1fr; } }
+  textarea{ resize:vertical; min-height:130px; }
+  .form-note{ font-size:.85rem; color:var(--paper-faint); }
+  .success-box{ display:none; border:1px solid var(--brass); padding:28px; color:var(--paper-dim); }
+  .success-box.is-shown{ display:block; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav__mark">
+    <span class="nav__mark-box">TLRS</span>
+    <span class="nav__mark-name">The Living<br>Room Studios</span>
+  </a>
+  <button class="nav__burger" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+  <ul class="nav__links">
+    <li><a href="index.html" data-page="index.html">Home</a></li>
+    <li><a href="work.html" data-page="work.html">Work</a></li>
+    <li><a href="services.html" data-page="services.html">Services</a></li>
+    <li><a href="about.html" data-page="about.html">About</a></li>
+    <li><a href="contact.html" class="btn btn--solid nav__cta" data-page="contact.html">Book a Shoot</a></li>
+  </ul>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Get in touch</span>
+    <h1>Book a Shoot,<br>or Just Ask a Question</h1>
+    <p class="lede" style="margin-top:1em;">Tell us what you have in mind and a preferred date. We'll reply by email to confirm availability &mdash; usually within 1&ndash;2 days.</p>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="info-card">
+        <h4>Call or WhatsApp</h4>
+        <a href="tel:07350709101">0735 070 9101</a>
+      </div>
+      <div class="info-card">
+        <h4>Email</h4>
+        <a href="mailto:studiosthelivingroom@gmail.com">studiosthelivingroom@gmail.com</a>
+      </div>
+      <div class="info-card">
+        <h4>Instagram</h4>
+        <a href="https://instagram.com/tlrs.s" target="_blank" rel="noopener">@tlrs.s</a>
+      </div>
+    </div>
+
+    <div>
+      <form id="enquiry-form" name="enquiries" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="enquiries">
+        <p style="display:none">
+          <label>Don't fill this out if you're human: <input name="bot-field"></label>
+        </p>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel">
+          </div>
+          <div class="field">
+            <label for="service">Service</label>
+            <select id="service" name="service" required>
+              <option value="">Select one</option>
+              <option>Portraits</option>
+              <option>Weddings</option>
+              <option>Fashion &amp; Beauty</option>
+              <option>Corporate Shoot</option>
+              <option>Events</option>
+              <option>Commercials</option>
+              <option>Graphics Design</option>
+              <option>Other / Not sure</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="date">Preferred date</label>
+            <input id="date" name="preferred_date" type="date">
+          </div>
+          <div class="field">
+            <label for="budget">Estimated budget (optional)</label>
+            <input id="budget" name="budget" type="text" placeholder="e.g. GH₵ 1,500">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">Tell us about the shoot</label>
+          <textarea id="message" name="message" required placeholder="Location, number of people, vision, anything else that helps us prepare."></textarea>
+        </div>
+
+        <p class="form-note">This is an enquiry, not a confirmed booking. We'll follow up by email to lock in the date.</p>
+        <button type="submit" class="btn btn--solid btn--full">Send Enquiry</button>
+      </form>
+
+      <div class="success-box" id="success-box">
+        <h3 style="font-size:1.3rem; margin-bottom:.4em;">Thank you &mdash; enquiry received.</h3>
+        <p>We'll get back to you by email shortly to confirm details and availability.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div>
+      <h4>The Living Room Studios</h4>
+      <p style="color:var(--paper-dim); max-width:32ch; font-size:.92rem;">A team of professional visual scientists, visualising and capturing great moments &mdash; from the lens to your heart.</p>
+    </div>
+    <div>
+      <h4>Navigate</h4>
+      <ul class="footer__list">
+        <li><a href="work.html">Work</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul class="footer__list">
+        <li><a href="tel:07350709101">0735 070 9101</a></li>
+        <li><a href="mailto:studiosthelivingroom@gmail.com">studiosthelivingroom@gmail.com</a></li>
+        <li><a href="https://instagram.com/tlrs.s" target="_blank" rel="noopener">@tlrs.s</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__motto">&#124;&#124; Visualising and Capturing Great Moments &hellip; From the Lens to Your Heart &#124;&#124;</div>
+  <div class="footer__bottom">&copy; <span id="year"></span> The Living Room Studios. All rights reserved.</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('enquiry-form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    fetch('/', { method: 'POST', body: new URLSearchParams(data).toString(),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+      .then(() => {
+        form.style.display = 'none';
+        document.getElementById('success-box').classList.add('is-shown');
+      })
+      .catch(() => alert('Something went wrong sending your enquiry. Please email studiosthelivingroom@gmail.com directly.'));
+  });
+</script>
+</body>
+</html>
